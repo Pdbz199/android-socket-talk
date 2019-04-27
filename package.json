@@ -1,0 +1,26 @@
+{
+  "name": "tech-talk",
+  "version": "1.0.0",
+  "description": "Using sockets with Android!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pdbz199/android-socket-talk.git"
+  },
+  "keywords": [
+    "Android",
+    "Socket",
+    "Javascript",
+    "Node"
+  ],
+  "author": "Preston Rozwood",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pdbz199/android-socket-talk/issues"
+  },
+  "homepage": "https://github.com/Pdbz199/android-socket-talk#readme"
+}
