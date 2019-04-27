@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Android Socket Talk!</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+
+    <body>
+        <div class="messages"></div>
+
+        <div class="enter-msg">
+            <form>
+                <textarea class="chat-input" rows="1" data-radium="true"></textarea>
+                <input class="send-button" type="button" value="send">
+            </form>
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/annyang/2.4.0/annyang.min.js"></script>
+        <script>
+            const socket = io();
+
+            var addNewMsg = (fromMe, message) => {
+                let newMsg = $('<div/>')
+                    .attr("class", fromMe ? "container" : "container darker")
+                    .append("<img src=\"profile.png\" alt=\"Avatar\" style=\"width:100%;\">")
+                    .append(`<p>${message}</p>`)
+
+                $('.messages').append(newMsg)
+            }
+
+            $(document).ready(function() {
+                socket.on('message', function(data) {
+                    addNewMsg(data.id === 0 ? true : false, data.msg)
+                })
+
+                $('.send-button').on('click', function() {
+                    let message = $('.chat-input').val()
+                    $('.chat-input').val("")
+                    socket.emit("message", {msg: message, id: 0})
+                })
+            })
+        </script>
+    </body>
+</html>
