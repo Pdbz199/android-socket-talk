@@ -21,7 +21,7 @@ io.sockets.on('connection', function(socket) {
     console.log(`${socket.id} connected`)
 
 	socket.on('message', function(data) {
-		socket.emit('message', data)
+		io.sockets.emit('message', data)
     })
     
     socket.on('disconnect', function () {
